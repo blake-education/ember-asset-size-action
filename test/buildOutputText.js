@@ -4,6 +4,7 @@ import { buildOutputText } from '../lib/helpers';
 describe('Build output Text', function () {
   it('should show the correct table output for a file diff', function () {
     const diff = {
+      chunks: { raw: 123, gzip: 45 },
       'auto-import-fastboot.js': { raw: 221142, gzip: 76707 },
       'ember-website.js': { raw: -2995, gzip: -1013 },
       'ember-website-fastboot.js': { raw: 0, gzip: 0 },
@@ -18,6 +19,7 @@ describe('Build output Text', function () {
 
 File | raw | gzip
 --- | --- | ---
+chunks|+123 B|+45 B
 auto-import-fastboot.js|+221 kB|+76.7 kB
 
 Files that got Smaller 🎉:
@@ -80,7 +82,7 @@ Total Sizes 📊:
 
 File | raw | gzip
 --- | --- | ---
-js|+3.33 MB|+945 kB
-css|+98.2 kB|+28.1 kB`);
+js|3.33 MB|945 kB
+css|98.2 kB|28.1 kB`);
   });
 });
