@@ -108,4 +108,6 @@ If you'd like the PR comment to display the diff between the total asset sizes (
 
 ## License
 
-TBD
+MIT
+
+See LICENSE file.
