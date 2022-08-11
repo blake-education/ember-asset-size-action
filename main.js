@@ -29,7 +29,7 @@ async function run() {
 
     const fileDiffs = diffSizes(normaliseFingerprint(baseAssets), normaliseFingerprint(prAssets));
 
-    const uniqueCommentIdentifier = '_Created by [ember-asset-size-action](https://github.com/simplabs/ember-asset-size-action/)_';
+    const uniqueCommentIdentifier = '_Created by [ember-asset-size-action](https://github.com/blake-education/ember-asset-size-action/)_';
     
     let prTotals = null
     let prTotalDiffs = null;
