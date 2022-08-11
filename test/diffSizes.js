@@ -12,7 +12,7 @@ describe('Diff Sizes', function () {
       'vendor.css': { raw: 57988, gzip: 17920, brotli: null },
     };
 
-    const masterAssets = {
+    const baseAssets = {
       'ember-website.js': { raw: 386356, gzip: 70873, brotli: null },
       'ember-website-fastboot.js': { raw: 956, gzip: 414, brotli: null },
       'vendor.js': { raw: 2329192, gzip: 666522, brotli: null },
@@ -20,7 +20,7 @@ describe('Diff Sizes', function () {
       'vendor.css': { raw: 57988, gzip: 17920, brotli: null },
     };
 
-    const diff = diffSizes(masterAssets, prAssets);
+    const diff = diffSizes(baseAssets, prAssets);
 
     expect(diff).to.deep.equal({
       'auto-import-fastboot.js': { raw: 221142, gzip: 76707 },

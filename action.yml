@@ -7,10 +7,11 @@ branding:
 inputs:
   repo-token:
     description: 'The GITHUB_TOKEN secret'
-  show-total-size-diff:
+    required: true
+  show-totals:
     description: 'Display a table of the total differences in size for JS & CSS'
     required: false
-    default: 'no'
+    default: 'yes'
   update-comments:
     description: 'Update existing asset size comment instead of creating a new one each time'
     required: false
