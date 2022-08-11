@@ -2,6 +2,8 @@
 
 This action will calculate the diff in asset size for your main JS files and CSS files for each PR. It will then comment with the change in asset size on each PR.
 
+NOTE: we forked this from https://github.com/simplabs/ember-asset-size-action due to being unable to get our changes merged.
+
 ## Example usage
 
 Create a file named `.github/workflows/ember-assets.yml` in your repo and add the following:
