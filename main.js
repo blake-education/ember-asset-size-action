@@ -5,9 +5,11 @@ import { getOctokit, context } from '@actions/github';
 import {
   normaliseFingerprint,
   diffSizes,
+  diffTotals,
   buildOutputText,
   getPullRequest,
   getAssetSizes,
+  sumAssetSizes,
 } from './lib/helpers';
 
 let octokit;
@@ -18,16 +20,26 @@ async function run() {
     octokit = getOctokit(myToken);
     const pullRequest = await getPullRequest(context, octokit);
 
+    const showTotals = getInput('show-totals', { required: false }) === 'yes';
     const prAssets = await getAssetSizes();
 
     await exec(`git checkout ${pullRequest.base.sha}`);
 
-    const masterAssets = await getAssetSizes();
+    const baseAssets = await getAssetSizes();
 
-    const fileDiffs = diffSizes(normaliseFingerprint(masterAssets), normaliseFingerprint(prAssets));
+    const fileDiffs = diffSizes(normaliseFingerprint(baseAssets), normaliseFingerprint(prAssets));
 
-    const uniqueCommentIdentifier = '_Created by [ember-asset-size-action](https://github.com/simplabs/ember-asset-size-action/)_';
-    const body = `${buildOutputText(fileDiffs)}\n\n${uniqueCommentIdentifier}`;
+    const uniqueCommentIdentifier = '_Created by [ember-asset-size-action](https://github.com/blake-education/ember-asset-size-action/)_';
+    
+    let prTotals = null
+    let prTotalDiffs = null;
+    if (showTotals) {
+      const baseTotals = sumAssetSizes(baseAssets);
+      prTotals = sumAssetSizes(prAssets);
+      prTotalDiffs = diffTotals(baseTotals, prTotals);
+    }
+
+    const body = `${buildOutputText(fileDiffs, prTotalDiffs, prTotals)}\n\n${uniqueCommentIdentifier}`;
 
     const updateExistingComment = getInput('update-comments', { required: false });
     let existingComment = false;
