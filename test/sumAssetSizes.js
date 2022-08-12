@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { sumAssetSizes } from '../lib/helpers.js';
 
 describe('sumAssetSizes', function () {
-  it('sums the total sizes for each file type', function() {
+  it('sums the total sizes for each file type', function () {
     const assetSizeReport = {
       'ember-website.js': { raw: 1000, gzip: 10, brotli: null },
       'vendor.js': { raw: 1000, gzip: 10, brotli: null },
