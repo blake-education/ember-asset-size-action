@@ -1,8 +1,8 @@
-import { expect } from "chai";
-import { diffTotals } from "../lib/helpers";
+import { expect } from 'chai';
+import { diffTotals } from '../lib/helpers';
 
-describe("Diff Totals", function () {
-  it("should correctly report size differences between two branches (decreases, increases, and unchanged)", function () {
+describe('Diff Totals', function () {
+  it('should correctly report size differences between two branches (decreases, increases, and unchanged)', function () {
     const baseBranchTotals = {
       css: {
         raw: 2000,

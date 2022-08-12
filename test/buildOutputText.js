@@ -76,7 +76,7 @@ ember-website.css| 0 B| 0 B
 vendor.css| 0 B| 0 B
 
 
-Total assets size diff📊:
+Total Sizes diff 📊:
 
 File | raw | gzip
 --- | --- | ---
